@@ -1,25 +1,15 @@
-# Meta-tags
+# Ember CLI Social Media Tags
 
-This README outlines the details of collaborating on this Ember addon.
+## An Ember addon.
 
-## Installation
+The addon is based around iStefo's Ember-Meta module (https://gist.github.com/iStefo/5481507), which I have basically put into a service, injected into the App's routes, under the namespace metaTags.
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+The service exposes 1 method `setTags` which takes an object of meta tag key value pairs.
 
-## Running
+At the moment only title and description are handled, but there will be more to come.
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+The facebook SDK script is also appended to the body of index.html. You will need to set your facebook app id in an environment variable in your app
 
-## Running Tests
+	// your-app/config/environment.js
 
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+	ENV.APP.FACEBOOK_APP_ID: 123456789
