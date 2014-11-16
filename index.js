@@ -3,13 +3,13 @@
 module.exports = {
 	name: 'ember-cli-social-media-tags',
 
-	contentFor: function(type, config) {
+	contentFor: function(type, appConfig) {
 
 		if(type === 'body') {
 			return	"<script>\n" + 
 					"window.fbAsyncInit = function() {\n " +
 						"FB.init({\n " + 
-						"appId		: " + config.APP.FACEBOOK_APP_ID + ",\n " +
+						"appId		: " + appConfig.APP.FACEBOOK_APP_ID + ",\n " +
 						"xfbml		: true,\n" +
 						"version	: 'v2.2'\n" +
 						"});\n " +
@@ -24,16 +24,5 @@ module.exports = {
 					"}(document, 'script', 'facebook-jssdk'));" +
 					"</script>";
 		}
-	},
-
-	config: function(environment, config) {
-
-		var ENV = config;
-
-		ENV.contentSecurityPolicy['script-src'] = ENV.contentSecurityPolicy['script-src'] + " 'unsafe-inline' connect.facebook.net";
-		ENV.contentSecurityPolicy['frame-src'] = ENV.contentSecurityPolicy['frame-src'] + " static.ak.facebook.com s-static.ak.facebook.com";
-		ENV.contentSecurityPolicy['style-src'] = ENV.contentSecurityPolicy['style-src'] + " 'unsafe-inline'";
-
-		return ENV;
 	}
 };
